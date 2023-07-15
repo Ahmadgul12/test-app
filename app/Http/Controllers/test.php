@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-                class test extends Controller
-{
-                        public function test()
+class test extends Controller
                         {
-                            echo "Only test";
-         
-                        }
-                        
+                            public function test()
+                            {
+                                echo 'Only test';
+
+                            }
 }
