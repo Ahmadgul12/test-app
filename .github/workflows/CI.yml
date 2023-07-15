@@ -43,6 +43,7 @@ jobs:
 
       - name: Commit changes
         run: |
+          git config --global --add safe.directory /__w/test-app/test-app
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git add -A
