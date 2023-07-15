@@ -28,9 +28,7 @@ jobs:
           fetch-depth: 1
 
       - name: Set Git user email
-        run: |
-          git init
-          git config user.email "action@github.com"
+        run: git config user.email "action@github.com"
 
       - name: Install composer dependencies
         run: |
