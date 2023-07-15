@@ -1,5 +1,10 @@
-on: push
+on:
+  push:
+    branches:
+      - main
+
 name: CI
+
 jobs:
   phpunit:
     runs-on: ubuntu-latest
@@ -17,7 +22,7 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
         with:
           fetch-depth: 1
 
@@ -32,5 +37,14 @@ jobs:
 
       - name: Run Testsuite
         run: vendor/bin/phpunit tests/
+
       - name: Run Pint
         run: vendor/bin/pint
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git commit -m "Auto-commit styled code" || echo "No changes to commit"
+          git push
